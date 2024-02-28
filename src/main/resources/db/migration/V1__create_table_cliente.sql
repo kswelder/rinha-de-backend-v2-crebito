@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS cliente (
+    id SERIAL PRIMARY KEY,
+    limite INTEGER,
+    saldo INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS transacao (
+    id SERIAL PRIMARY KEY,
+    valor INTEGER NOT NULL,
+    tipo CHAR NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    criado TIMESTAMP NOT NULL,
+    cliente_id INTEGER REFERENCES cliente(id) ON DELETE CASCADE
+);
